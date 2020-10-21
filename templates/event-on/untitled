@@ -1,0 +1,145 @@
+{% extends 'event-on/base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<!-- Sub Banner -->
+<section class="sub-banner newsection">
+    <div class="container">
+        <h2 class="title">Eventos y Conciertos</h2>
+        <ul class="breadcrumb">
+            <li><a href="/event-on/">Home</a></li>
+             <li>Eventos y Conciertos</li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- Events -->
+<section class="events newsection">
+    <div class="container">
+        <div class="row">
+            <div class="blog col-md-9">
+                <div class="clearfix">
+
+                {% if events %}
+                    {% for event in events %}
+                    <div class="event-container clearfix">
+                        <div class="event clearfix">
+                            <div class="eventsimg">
+                                <img src="/media/{{event.photo.url}}/" alt="">
+                            </div>
+                            <div class="event-content">
+                                <h3 class="title"><a href="/event-on/event/{{event.slug}}/">{{event.name}}</a></h3>
+                                <ul class="meta">
+                                    <li><a href="#"><i class="icon fa fa-globe"></i>{{event.place.name}}</a>
+                                    <li class="date"><i class="icon fa fa-calendar"></i>{{event.date}}</li>
+                                    <li><a href="#"><i class="icon fa fa-comment"></i> 19</a> </li>
+                                    <!--<li><a href="#"><i class="icon fa fa-user"></i>by Admin</a></li>-->
+                                </ul>
+                                <p>{{event.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div>
+                        <h1>No hay eventos que mostrar!</h1>
+                    </div>
+                {% endif %}
+                    
+                    <div>
+                        <!--Here goes the calendar! -->
+                        <!--<iframe src="https://www.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=carlos.osram%40gmail.com&amp;color=%230D7813&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%230D7813&amp;src=es.usa%23holiday%40group.v.calendar.google.com&amp;color=%230D7813&amp;ctz=America%2FMexico_City" style=" border:solid 1px #777 " width="800" height="600" frameborder="0" scrolling="no"></iframe>-->
+                        <!--<iframe src="https://www.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=carlos.osram%40gmail.com&amp;color=%230D7813&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%230D7813&amp;src=es.usa%23holiday%40group.v.calendar.google.com&amp;color=%230D7813&amp;ctz=America%2FMexico_City" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no" onload="UncheckAll()" id="frame"></iframe>-->
+
+                    </div>
+
+                    <ul class="pagination clearfix">
+                        <li class=""><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class=""><a href="#">1</a></li>
+                        <li class=""><a href="#">2</a></li>
+                        <li class=""><a href="#">3</a></li>
+                        <li class=""><a href="#">4</a></li>
+                        <li class=""><a href="#">5</a></li>
+                        <li class=""><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <aside id="aside" class="aside-bar-style-two clearfix">
+                    <div class="widget border-remove clearfix">
+                        <div class="eventform-con ">
+                            <form>
+                                <div class="form-input search-location">
+                                    <input type="text" placeholder="Search anything" >
+                                   
+                                    <button class="icon fa fa-search"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="widget clearfix">
+                        <h3 class="title">Top Popular Post</h3>
+                        <div class="top-ppost">
+                            <div class="date">
+                                <p><span>31</span>FEB</p>
+                            </div>
+                            <div class="content">
+                                <h4  class="title"><a href="#">Using Social Services Increase Your Sales </a></h4>
+                                <a href="#" class="meta"><i class="icon fa fa-map-marker"></i>Istanbul / TR</a>
+                            </div>
+                        </div>
+
+                        <div class="top-ppost">
+                            <div class="date">
+                                <p><span>31</span>FEB</p>
+                            </div>
+                            <div class="content">
+                                <h4  class="title"><a href="#">Using Social Services Increase Your Sales </a></h4>
+                                <a href="#" class="meta"><i class="icon fa fa-map-marker"></i>Istanbul / TR</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="widget clearfix">
+
+                        <div class="widget categories">
+                            <h3 class="title">Filter by Categories</h3>
+                            <ul>
+                                <li><a href="#">Everything <span class="numbers">68</span></a></li>
+                                <li><a href="#">Art<span class="numbers">10</span></a></li>
+                                <li><a href="#">Classical & Opera<span class="numbers">25</span></a></li>
+                                <li><a href="#">Classical<span class="numbers">30</span></a></li>
+                                <li><a href="#">Opera<span class="numbers">100</span></a></li>
+                                <li><a href="#">Comedy<span class="numbers">5</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="widget tag">
+                            <h3 class="title">Tag</h3>  
+                            <a href="#">Event</a><a href="#">Fashion</a><a href="#">Design</a><a href="#">Hotels</a><a href="#">Up Coming</a><a href="#">Venue</a><a href="#">Speaker</a><a href="#" class="last">Conference</a>
+                        </div>  
+
+
+                        <div class="widget news">
+                            <h3 class="title">Join Our Newsletter</h3>
+                            <form>
+                                <div class="form-group">
+                                     <input type="text" placeholder="Add Your Email">
+                                    <button class="icon fa fa-paper-plane-o "></button>
+                                </div>
+                                <button class="btn btn-disabled">Sign Up</button>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+            </div> 
+        </div> 
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_block %}
+                    <li><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                            {% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+{% block body_block %}
+
+<!-- BLOG -->
+    <section class="blog">
+
+        <div class="container">
+            <div class="row">
+
+                <!-- BLOG LIST -->
+                <div class="col-md-8">
+                    <div class="blog-list-content">
+
+                        {% if results %}
+                        {% for post in results %}
+                        <!-- POST -->
+                        <div class="post">
+                            <!-- POST MEDIA -->
+                            <div class="post-media">
+                                <div class="image-thumb">
+                                    <img src="/media/{{post.wall.url}}/" alt="">
+                                </div>
+                            </div>
+                            <!-- END / POST MEDIA -->
+
+                            <!-- POST BODY -->
+                            <div class="post-body">
+                                <div class="post-title">
+                                    <h3 class="md"><a href="/post/{{post.slug}}/">{{post.name}}</a></h3>
+                                </div>
+                                <div class="post-meta">
+                                    by <a href="/author/{{post.author.username}}/">{{post.author.username}}</a> on {{post.created_at|date:"M d, Y"}}
+                                </div>
+                                <div class="post-content">
+                                    <p>{{post.summary|safe}}</p>
+                                </div>
+                                <div class="post-link">
+                                    <a href="/post/{{post.slug}}/">
+                                        <i class="fa fa-play-circle-o"></i>
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- END / POST BODY -->
+                        </div>
+                        <!-- END / POST -->
+                        {% endfor %}
+                        {% else %}
+                            <h4>No se encontraron resultados</h4>
+                        {% endif %}
+
+                    </div>
+                    <ul class="pager">
+                            {% if results.has_previous %}
+                            <li><a href="?page={{ results.previous_page_number }}">Anterior ≤</a></li>
+                            {% endif %}
+
+                            <li class="current">Page {{ results.number }} of {{ results.paginator.num_pages }}</li>
+
+                            {% if results.has_next %}
+                            <li><a href="?page={{ results.next_page_number }}">Siguiente ≤</a></li>
+                            {% endif %}
+
+                        </ul>
+
+                </div>
+                <!-- END / BLOG LIST -->
+
+                <!-- SIDEBAR -->
+                <div class="col-md-3 col-md-offset-1">
+                    <aside class="blog-sidebar">
+
+                        <!-- WIDGET SEARCH -->
+                        <div class="widget widget_search">
+                            <h4 class="sm">Search in Blog</h4>
+                            <form>
+                                <div class="form-item">
+                                    <input type="text">
+                                </div>
+                                <div class="form-actions">
+                                    <input type="submit">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- END / WIDGET SEARCH -->
+
+                        <!-- WIDGET CATEGORIES -->
+                        <div class="widget widget_categories">
+                            <h4 class="sm">Categories</h4>
+                            <ul>
+                                <li><a href="blog-list.html#">All</a></li>
+                            </ul>
+                        </div>
+                        <!-- END / WIDGET CATEGORIES -->
+
+                        <!-- WIDGET RECENT POST -->
+                        <div class="widget widget_recent_post">
+                            <h4 class="sm">Recent posts</h4>
+                            <ul>
+                                <li>
+                                    <a href="blog-list.html#">How to Create Course in this theme?</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END / WIDGET RECENT POST -->
+
+                        <!-- WIDGET TAG CLOUD -->
+                        <div class="widget widget_tag_cloud">
+                            <h4 class="sm">Tags</h4>
+                            <div class="tagcloud">
+                                <a href="blog-list.html#">tag 1</a>
+                            </div>
+                        </div>
+                        <!-- END / WIDGET TAG CLOUD -->
+
+                    </aside>
+                </div>
+                <!-- END / SIDEBAR -->
+
+
+            </div>
+        </div>
+
+    </section>
+    <!-- END / BLOG -->
+
+{% endblock %}

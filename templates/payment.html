@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_block %}
+                    <li><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                        	{% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="categories.html#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    <li>
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+
+{% block body_block %}
+
+<!-- SUB BANNER -->
+    <section class="sub-banner sub-banner-course">
+        <div class="awe-static bg-sub-banner-course"></div>
+        <div class="container">
+            <div class="sub-banner-content">
+                <h2 class="text-center">{{post.course.name}}</h2>
+            </div>
+        </div>
+    </section>
+    <!-- END / SUB BANNER -->
+
+
+    <!-- BLOG -->
+    <section class="blog">
+
+        <div class="container">
+            <div class="row">
+
+                <!-- Start section -->
+            <section>
+                <div class="container">
+
+                    <h3>Payment Details</h3>
+									<div class="grid">
+										<div class="column-1-2">
+																						
+											<form action="{{ form.action }}" method="{{ form.method }}">
+												{% csrf_token %}
+		    									{{ form.as_p }}
+		    									<!-- Start action payment -->
+												<div class="action-payment">
+													<label for="checkbox2" class="slideCheckbox">
+														<input type="checkbox" id="checkbox2" name="checkbox2" value="terms">
+														<span></span><div></div>
+														I agree to the <a href="payment.html#0" class="link">terms</a> for this site
+													</label>
+													<button type="submit" class="button-invert medium">Checkout</button>
+												</div>
+												<!-- / End action payment -->
+
+											</form>
+
+											
+										</div>
+										
+									</div>									
+                </div>
+            </section>
+            <!-- / End section -->
+
+            </div>
+        </div>
+
+    </section>
+    <!-- END / BLOG -->
+
+{% endblock %}
+
+

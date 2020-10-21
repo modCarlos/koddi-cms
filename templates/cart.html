@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_block %}
+                    <li><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                        	{% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="categories.html#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    <li>
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+
+{% block body_block %}
+
+<!-- SUB BANNER -->
+    <section class="sub-banner sub-banner-course">
+        <div class="awe-static bg-sub-banner-course"></div>
+        <div class="container">
+            <div class="sub-banner-content">
+                <h2 class="text-center">{{post.course.name}}</h2>
+            </div>
+        </div>
+    </section>
+    <!-- END / SUB BANNER -->
+
+
+    <!-- BLOG -->
+    <section class="blog">
+
+        <div class="container">
+            <div class="row">
+
+                <!-- Start section -->
+            <section>
+                <div class="container">
+
+                    <div class="grid with-sidebar-right">
+
+                        <!-- Start primary column -->
+                        <div class="primary">
+                        
+                            <div id="shop-message">No items in cart</div>
+
+                            <table class="responsive" id="shopCart">
+                                <tbody>
+                                    <tr>
+                                        <th>Preview</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Shipping</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <!-- Start preview -->
+                                            <div class="item-preview">
+                                                <img src="{% static 'images/105_1.jpg' %}" alt="image">
+                                            </div>
+                                            <!-- / End preview -->
+                                        </td>
+                                        <td>
+                                            <!-- Start description -->
+                                            <div class="item-description">
+                                                <h4>Women's t-shirt</h4>
+                                                Lorem ipsum dolor sit amet consectetur
+                                            </div>
+                                            <!-- / End description -->
+                                        </td>
+                                        <td>
+                                            <!-- Start quantity product -->
+                                            <div class="input-number">
+                                                <input type="text" name="product-quantity" data-min="1" data-max="10" value="1">
+                                            </div>
+                                            <!-- / End quantity product -->
+                                        </td>
+                                        <td>
+                                            <!-- Start shipping -->
+                                            <div class="item-shipping">5%</div>
+                                            <!-- / End shipping -->
+                                        </td>
+                                        <td>
+                                            <!-- Start total -->
+                                            <div class="item-total">$9.90</div>
+                                            <!-- / End total -->
+                                        </td>
+                                        <td>
+                                            <!-- Start actions -->
+                                            <div class="item-actions">
+                                                <a href="shopping-cart.html#" class="item-remove"><i class="icons icon-trash"></i></a>
+                                            </div>
+                                            <!-- / End actions -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <!-- Start preview -->
+                                            <div class="item-preview">
+                                                <img src="{% static 'images/239_1.jpg' %}" alt="image">
+                                            </div>
+                                            <!-- / End preview -->
+                                        </td>
+                                        <td>
+                                            <!-- Start description -->
+                                            <div class="item-description">
+                                                <h4>Men's jackets</h4>
+                                                Lorem ipsum dolor sit amet consectetur
+                                            </div>
+                                            <!-- / End description -->
+                                        </td>
+                                        <td>
+                                            <!-- Start quantity product -->
+                                            <div class="input-number">
+                                                <input type="text" name="product-quantity" data-min="1" data-max="10" value="1">
+                                            </div>
+                                            <!-- / End quantity product -->
+                                        </td>
+                                        <td>
+                                            <!-- Start shipping -->
+                                            <div class="item-shipping">5%</div>
+                                            <!-- / End shipping -->
+                                        </td>
+                                        <td>
+                                            <!-- Start total -->
+                                            <div class="item-total">$12.90</div>
+                                            <!-- / End total -->
+                                        </td>
+                                        <td>
+                                            <!-- Start actions -->
+                                            <div class="item-actions">
+                                                <a href="shopping-cart.html#" class="item-remove"><i class="icons icon-trash"></i></a>
+                                            </div>
+                                            <!-- / End actions -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <!-- Start preview -->
+                                            <div class="item-preview">
+                                                <img src="{% static 'images/295_1.jpg' %}" alt="image">
+                                            </div>
+                                            <!-- / End preview -->
+                                        </td>
+                                        <td>
+                                            <!-- Start description -->
+                                            <div class="item-description">
+                                                <h4>Women's jackets</h4>
+                                                Lorem ipsum dolor sit amet consectetur
+                                            </div>
+                                            <!-- / End description -->
+                                        </td>
+                                        <td>
+                                            <!-- Start quantity product -->
+                                            <div class="input-number">
+                                                <input type="text" name="product-quantity" data-min="1" data-max="10" value="1">
+                                            </div>
+                                            <!-- / End quantity product -->
+                                        </td>
+                                        <td>
+                                            <!-- Start shipping -->
+                                            <div class="item-shipping">5%</div>
+                                            <!-- / End shipping -->
+                                        </td>
+                                        <td>
+                                            <!-- Start total -->
+                                            <div class="item-total">$30.00</div>
+                                            <!-- / End total -->
+                                        </td>
+                                        <td>
+                                            <!-- Start actions -->
+                                            <div class="item-actions">
+                                                <a href="shopping-cart.html#" class="item-remove"><i class="icons icon-trash"></i></a>
+                                            </div>
+                                            <!-- / End actions -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <!-- / End primary column -->
+                    
+                        <!-- Start left sidebar -->
+                        <aside>
+                            <div class="total-block">
+                                <ul>
+                                    <li>
+                                        <span class="total-block-title">Subtotal:</span>
+                                        <span id="total-block-subtotal">$65.70</span>
+                                    </li>
+                                    <li>
+                                        <span class="total-block-title">Taxes (5%):</span>
+                                        <span id="total-block-taxes">$3.29</span>
+                                    </li>
+                                    <li>
+                                        <span class="total-block-title">Shipping:</span>
+                                        <span id="total-block-shipping">$5.00</span>
+                                    </li>
+                                    <li>
+                                        <span class="total-block-title">Total:</span>
+                                        <span id="total-block-total">$73.98</span>
+                                    </li>
+                                </ul>
+                                <div class="total-block-button">
+                                    <a href="/checkout/"><button type="submit" class="button-invert medium">Pagar</button></a>
+                                </div>
+                            </div>
+                        </aside>
+                        <!-- / End left sidebar -->
+                    </div>
+
+                </div>
+            </section>
+            <!-- / End section -->
+
+            </div>
+        </div>
+
+    </section>
+    <!-- END / BLOG -->
+
+{% endblock %}

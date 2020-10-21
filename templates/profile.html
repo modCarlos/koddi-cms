@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load endless %}
+{% block nav_block %}
+                    <li class="menu-item-has-children current-menu-item megamenu col-4"><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                        	{% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                    <li class="menu-item-has-children">
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="https://slack.com">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+
+{% block body_block %}
+     <!-- PROFILE FEATURE -->
+    <section class="profile-feature">
+        <div class="awe-parallax bg-profile-feature"></div>
+        <div class="awe-overlay overlay-color-3"></div>
+        <div class="container">
+            <div class="info-author">
+                <div class="image">
+                    {% if profile.image %}
+                        <img src="/media/{{profile.image.url}}/" alt="">
+                    {% else %}
+                        <img src="{% static "images/geek.gif" %}">
+                    {% endif %}
+                </div>    
+                <div class="name-author">
+                    <h2 class="big">{{profile.user.username}}</h2>
+                </div>     
+                <div class="address-author">
+                </div>
+            </div>
+            <div class="info-follow">
+                                
+            </div>
+        </div>
+    </section>
+    <!-- END / PROFILE FEATURE -->
+
+
+    <!-- CONTEN BAR -->
+    <section class="content-bar">
+        <div class="container">
+            <ul>
+                
+                <li class="current">
+                    <a href="#">
+                        <i class="icon md-user-minus"></i>
+                        Perfil
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+   <!-- END / CONTENT BAR -->
+
+    <!-- PROFILE -->
+    
+    <section class="profile">
+        <div class="container">
+            
+            <h3 class="md black">Perfil</h3>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="avatar-acount">
+                        <div class="changes-avatar">
+                            <div class="img-acount">
+                                {% if profile.image %}
+                                    <img src="/media/{{profile.image.url}}/" alt="">
+                                {% else %}
+                                    <img src="{% static "images/geek.gif" %}">
+                                {% endif %}
+
+                            </div>
+                        </div>   
+                        <div class="info-acount">
+                            <h3 class="md black">{{profile.user.username}}</h3>
+                            <p>{{profile.description}}</p>
+                        </div>
+                    </div>    
+                
+
+                <div>
+                    {% if profile.favorites.all %}
+                        <h2>Favoritos</h2>
+                        {% for post in profile.favorites.all %}
+                            <!-- POST -->
+                        <div class="post">
+                            <!-- POST MEDIA -->
+                            <div class="post-media">
+                                <div class="image-thumb">
+                                    <img src="/media/{{post.wall.url}}" alt="">
+                                </div>
+                            </div>
+                            <!-- END / POST MEDIA -->
+
+                            <!-- POST BODY -->
+                            <div class="post-body">
+                                <div class="post-title">
+                                    <h3 class="md"><a href="/post/{{post.slug}}/">{{post.name}}</a></h3>
+                                </div>
+                                <div class="post-meta">
+                                    by <a href="/author/{{post.author.username}}/">{{post.author.username}}</a> on {{post.created_at}}
+                                </div>
+                                <div class="post-content">
+                                    <p>{{post.summary}}</p>
+                                </div>
+                                <div class="post-link">
+                                    <a href="blog-single.html">
+                                        <i class="fa fa-play-circle-o"></i>
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- END / POST BODY -->
+                        </div>
+                        <!-- END / POST -->
+                        {% endfor %}
+
+                    {% else %}
+                        <h2>Aún no tienes favoritos...</h2>
+
+                    {% endif %}
+                </div>
+            </div>
+
+            </div>    
+        </div>
+    </section>
+
+
+    <!-- END / PROFILE -->
+{% endblock %}    

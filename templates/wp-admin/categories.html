@@ -1,0 +1,64 @@
+{% extends 'wp-admin/base.html' %}
+
+{% block title_block %}
+<h1>Categorías</h1>
+{% endblock %}
+
+{% block menu_block %}
+	<div class="leftmenu">        
+            <ul class="nav nav-tabs nav-stacked">
+            	<li class="nav-header">Navigation</li>
+                <li><a href="/kd-admin/"><span class="iconfa-laptop"></span> Home</a></li>
+                <li><a href="/kd-admin/courses/"><span class="iconfa-laptop"></span> Cursos</a></li>
+                <li><a href="/kd-admin/posts/"><span class="iconfa-laptop"></span> Posts</a></li>
+                <li class="active"><a href="/kd-admin/categories/"><span class="iconfa-laptop"></span> Categorias</a></li>
+                <li><a href="/kd-admin/tags/"><span class="iconfa-laptop"></span> Tags</a></li>
+                <li><a href="/kd-admin/users/"><span class="iconfa-laptop"></span> Usuarios</a></li>
+                <li><a href="/kd-admin/statistics/"><span class="iconfa-laptop"></span> Estadísticas</a></li>
+                <li><a href="/kd-admin/payments/"><span class="iconfa-laptop"></span> Payments</a></li>
+                <li><a href="/kd-admin/settings/"><span class="iconfa-laptop"></span> Settings</a></li>                                                
+            </ul>
+        </div><!--leftmenu-->
+{% endblock %}
+
+{% block main_block %}
+                <div class="span9">
+                    <h3 class="subtitle2">Categorias </h3>
+                    <a href="/kd-admin/add_category/"><button class="btn btn-primary">Add Category</button></a>
+                    <br /><br />
+                    <table class="table discussions">
+                        <colgroup>
+                            <col class="width60" />
+                            <col class="width15" />
+                            <col class="width10" />
+                            <col class="width15" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Courses</th>
+                                <th></th>
+                                <th>Posts</th>    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for category in categories %}
+                            <tr>
+                                <td>
+                                    <a href=""><i class="icon-remove">Rem</i></a> 
+                                    <a href="/kd-admin/category/{{category.slug}}/edit/"><i class="icon-edit">Ed</i></a> 
+                                    <a id="topic" href="/kd-admin/category/{{category.slug}}/" data-placement="top" data-toggle="tooltip" data-original-title="Click me to view topic page">{{category.name}}</a>
+                                </td>
+                                <td>{{category.courses}}</td>
+                                <td></td>
+                                <td>{{category.posts}}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                            
+                        <br /><br />
+                            
+                        
+                </div><!--span9-->
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_block %}
+                    <li><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                        	{% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children">
+                        <a href="categories.html#">Acceso</a>
+                        <ul class="sub-menu">
+                            <li><a href="/auth/login/">Login</a></li>
+                            <li><a href="/auth/register/">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children current-menu-item megamenu col-4">
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+{% block body_block %}    
+{% if error %}
+	{{error}}
+{% else %}
+
+    <!-- SUB BANNER -->
+    <section class="sub-banner sub-banner-course">
+        <div class="awe-static bg-sub-banner-course"></div>
+        <div class="container">
+            <div class="sub-banner-content">
+                <h2 class="text-center">{{course.name}}</h2>
+            </div>
+        </div>
+    </section>
+    <!-- END / SUB BANNER -->
+
+
+    <!-- COURSE -->
+    <section class="course-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="sidebar-course-intro">
+                        <div class="breadcrumb">
+                            <a href="/">Home</a> / 
+                            <a href="/courses/">Courses</a> / 
+                            {{course.name}}
+                        </div>   
+
+                        <div class="new-course">
+                            <div class="item course-code">
+                                <i class="icon md-barcode"></i>
+                                <h4><a href="course-intro.html#">Source Code</a></h4>
+                                <p class="detail-course"># A 15273</p>
+                            </div>
+                            <div class="item course-code">
+                                <i class="icon md-barcode"></i>
+                                <h4><a href="course-intro.html#">Disponible desde:</a></h4>
+                                <p class="detail-course">{{course.created_at|date:"M d, Y"}}</p>
+                            </div>
+                        </div>
+                        <hr class="line">
+                        <div class="about-instructor">
+                            <h4 class="xsm black bold">Acerca del autor</h4>
+                            <ul>
+                                <li>
+                                    <div class="image-instructor text-center">
+                                        <img src="/media/{{author.image.url}}" alt="">
+                                    </div>
+                                    <div class="info-instructor">
+                                        <cite class="sm black"><a href="/profile/{{course.author.username}}/">{{course.author.username}}</a></cite>
+                                        <a href="course-intro.html#"><i class="fa fa-envelope"></i></a>
+                                        <p>{{profile.description}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr class="line">
+
+                        <div class="widget widget_share">
+                            <i class="icon md-forward"></i>
+                            <h4 class="xsm black bold">Share course</h4>
+                            <div class="share-body">
+                                <a href="course-intro.html#" class="twitter" title="twitter">
+                                    <i class="icon md-twitter"></i>
+                                </a>
+                                <a href="course-intro.html#" class="pinterest" title="pinterest">
+                                    <i class="icon md-pinterest-1"></i>
+                                </a>
+                                <a href="course-intro.html#" class="facebook" title="facebook">
+                                    <i class="icon md-facebook-1"></i>
+                                </a>
+                                <a href="course-intro.html#" class="google-plus" title="google plus">
+                                    <i class="icon md-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="col-md-7">
+                    <div class="tabs-page">
+                        <ul class="nav-tabs" role="tablist">
+                            <li class="active"><a href="course-intro.html#introduction" role="tab" data-toggle="tab">Introducción</a></li>
+                            <li><a href="course-intro.html#outline" role="tab" data-toggle="tab">Contenido</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- INTRODUCTION -->
+                            <div class="tab-pane fade in active" id="introduction">
+                                <h4 class="sm black bold">Introducción</h4>
+                                <p>{{course.description|safe}}</h4>
+
+                                <img src="/media/{{course.wall.url}}/"/>
+                                
+                            </div>
+                            <!-- END / INTRODUCTION -->
+    
+                            <!-- OUTLINE -->
+                            <div class="tab-pane fade" id="outline">
+    
+                                <!-- SECTION OUTLINE -->
+                                <div class="section-outline">
+                                    <h4 class="tit-section xsm">Contenido</h4>
+                                    <ul class="section-list">
+                                        {% if posts %}
+                                        {% for post in posts %}
+                                        	<li>
+                                            	<div class="count"><span>{{post.position}}</span></div>
+                                            	<div class="list-body">
+                                                	<i class="icon md-gallery-2"></i>
+                                                	<p><a href="/post/{{post.slug}}/">{{post.name}}</a></p>
+                                            	</div>
+                                            	<a href="/post/{{post.slug}}/" class="mc-btn-2 btn-style-2">View</a>
+                                        	</li>
+                                        {% endfor %}
+    									{% else %}
+    										No hay contenido en este curso
+    									{% endif %}
+                                    </ul>
+                                </div>
+                                <!-- END / SECTION OUTLINE -->
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END / COURSE TOP -->
+
+{% endif %}
+{% endblock %}

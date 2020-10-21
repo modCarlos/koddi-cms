@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Event On</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.datetimepicker.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+
+    <script src="{% static "js/vendor/modernizr-2.6.2.min.js" %}" async></script>
+    <script type="text/javascript">var switchTo5x=true;</script>
+     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript" defer>stLight.options({publisher: "ur-b4964695-8b2f-20dd-2ced-c9f6141de24c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Header -->
+<header class="header-container">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="login-details clearfix">
+                        {% if request.user.is_authenticated %}
+                            <li>Bienvenido <a href="/event-on/profile/">{{request.user.username}}</a></li>
+                        {% else %}
+                            <li><a href="/event-on/auth/register/" class="customericon">Login</a></li>
+                            <li class="membericon">No eres un miembro?</li>
+                            <li><a href="/event-on/auth/register/" class="pri-color">Registrarse Ahora</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icon pull-right">
+                        <a href="#" class="facebook fa fa-facebook"></a>
+                        <a href="#" class="twitter fa fa-twitter"></a>
+                        <a href="#" class="googleplus fa fa-google-plus"></a>
+                        <a href="#" class="dribble fa fa-dribbble"> </a>
+                    </div>
+                </div>
+            </div> 
+        </div>     
+    </div>
+    <!-- Main Header  -->
+    <div class="main-header affix">
+
+        <!-- Moblie Nav Wrapper  -->
+        <div class="mobile-nav-wrapper">
+            <div class="container ">
+
+                <!-- logo  -->
+               <div id="logo">
+                <a href="/event-on/"><img src="{% static "img/logo.png" %}" alt=""></a>
+                </div>
+
+                <div id="sb-search" class="sb-search">
+                    <form>
+                        <input class="sb-search-input" placeholder="Search" type="text" name="search" id="search">
+                        <input class="sb-search-submit" type="submit" value="">
+                        <span class="sb-icon-search"></span>
+                    </form>
+                </div>
+                <!-- mobile-menu-icon -->
+
+                <div class="mobile-menu-icon">
+                    <i class="fa fa-bars"></i>
+                </div> 
+
+                <!-- Nav --> 
+                <nav class="main-nav mobile-menu">
+
+                    <ul class="clearfix">
+                        <li class="parent active"><a href="#">Home</a>
+                        </li>
+
+                        <li class="parent"><a href="/event-on/events/">Eventos</a>
+                            <!-- Sub memu -->
+                            <ul class="sub-menu">
+                                <li class="arrow"></li>
+                                <li><a href="/event-on/categories/">Categorías</a></li>
+                                <li><a href="/event-on/events/">Ver Todos</a></li>
+                                <li><a href="/event-on/calendar/">Calendario</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="parent"><a href="event-blog.html">Blog</a>
+                        </li>-->
+                        <li><a href="/event-on/contact/">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header> <!-- header -->  
+
+
+{% block body_block %}{% endblock %}
+
+
+
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">   
+            <div class="widget col-md-3">
+                <div class="about">
+                    <h2 class="title">About <span class="border"></span></h2>
+                    <p>Vivamus ante nulla, ultrices ut molestie pellentesque, posuere eu ligula. In porttitor in turpis eu porttitor. </p> 
+                </div>
+                <ul class="fa-ul">
+                    <li><i class="fa-li fa fa-map-marker"></i>1600 Pennsylvania Ave NW,
+                        Washington, D.C., DC 20500, ABD</li>
+                        <li> <i class="fa-li fa fa-phone fa-flip-horizontal"></i>+90 555 55 55</li>
+                        <li><i class="fa-li fa fa-envelope-o "></i><a href="#">info@example.com</a></li>
+                    </ul>           
+                </div>
+
+                <div class="widget col-md-3">
+                    <h2 class="title">Recent Blog Posts<span class="border"></span></h2>
+                    <div class="recent-blog">
+                        <div class="recent-img">
+                            <img src="{% static "img/recent-1.png" %}" alt="">
+                        </div>
+                        <div class="recent-content">
+                            <h3 class="title"><a href="#"> Lorem ipsum dolor sit amet consectetur. </a> </h3>
+                            <p class="date"><i class="icon fa fa-calendar"></i>October 24th, 2013</p>
+                            <p class="comment"><i class="icon fa fa-comment"></i><a href="#">23 Comments</a></p>
+                        </div>
+                    </div>
+
+                    <div class="recent-blog">
+                        <div class="recent-img">
+                            <img src="{% static "img/recent-2.png" %}" alt="">
+                        </div>
+                        <div class="recent-content">
+                            <h3 class="title"><a href="#"> Lorem ipsum dolor sit amet consectetur. </a> </h3>
+                            <p class="date"><i class="icon fa fa-calendar"></i>October 24th, 2013</p>
+                            <p class="comment"><i class="icon fa fa-comment"></i><a href="#">23 Comments</a></p>
+                        </div>
+                    </div>
+
+                    <div class="recent-blog">
+                        <div class="recent-img">
+                            <img src="{% static "img/recent-3.png" %}" alt="">
+                        </div>
+                        <div class="recent-content">
+                            <h3 class="title"><a href="#"> Lorem ipsum dolor sit amet consectetur. </a> </h3>
+                            <p class="date"><i class="icon fa fa-calendar"></i>October 24th, 2013</p>
+                            <p class="comment"><i class="icon fa fa-comment"></i><a href="#">23 Comments</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget lastest-tweets col-md-3">
+                    <h2 class="title"><span class=""></span></h2>
+                </div>
+
+                <div class="widget col-md-3">
+                    <h2 class="title">Flickr Photos<span class="border"></span></h2>
+                    <div class="flicker flickrwidget"></div>  
+                </div>
+            </div> 
+        </div>
+    </footer>     
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" defer></script>
+    <script>window.jQuery || document.write('<script src="{% static 'js/jquery-1.9.1.min.js' %}"><\/script>')</script>
+    <script src="{% static "js/plugins.js" %}" defer></script>
+    <script src="{% static "js/main.js" %}" defer></script>
+
+</body>
+</html>
+

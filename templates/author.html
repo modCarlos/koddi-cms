@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_block %}
+                    <li><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                            {% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="categories.html#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    <li>
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+{% block body_block %}
+     <!-- PROFILE FEATURE -->
+    <section class="profile-feature">
+        <div class="awe-parallax bg-profile-feature"></div>
+        <div class="awe-overlay overlay-color-3"></div>
+        <div class="container">
+            <div class="info-author">
+                <div class="image">
+                    <img src="/media/{{profile.image.url}}/" alt="">
+                </div>    
+                <div class="name-author">
+                    <h2 class="big">{{profile.user.username}}</h2>
+                </div>     
+                <div class="address-author">
+                    <i class="fa fa-map-marker"></i>
+                    <h3>Ciudad de México</h3>
+                </div>
+            </div>
+            <div class="info-follow">
+                <div class="trophies">
+                    <span>{{num_posts}}</span>
+                    <p>Publicaciones</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- END / PROFILE FEATURE -->
+
+
+    <!-- CONTEN BAR -->
+    <section class="content-bar">
+        <div class="container">
+            <ul>
+                
+                <li class="current">
+                    <a href="#">
+                        <i class="icon md-user-minus"></i>
+                        Perfil
+                    </a>
+                </li>
+                <li>
+                    <a href="/author/{{profile.user.username}}/posts/">
+                        <i class="icon md-people"></i>
+                        Posts
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+   <!-- END / CONTENT BAR -->
+
+
+
+
+    <!-- PROFILE -->
+    
+    <section class="profile">
+        <div class="container">
+            
+            <h3 class="md black">Perfil</h3>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="avatar-acount">
+                        <div class="changes-avatar">
+                            <div class="img-acount">
+                                <img src="/media/{{profile.image.url}}/" alt="">
+                            </div>
+                        </div>   
+                        <div class="info-acount">
+                            <h3 class="md black">{{profile.user.username}}</h3>
+                            <p>{{profile.description}}</p>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-md-3">
+                    <div class="social-connect">
+                        <h5>Social connect</h5>
+                        <ul>
+                            <li>
+                                <a href="account-profile-guest-view.html#" class="twitter">
+                                    <i class="icon md-twitter"></i>
+                                    <p>https://www.facebook.com/</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="account-profile-guest-view.html#" class="facebook">
+                                    <i class="icon md-facebook-1"></i>
+                                    <p>https://www.facebook.com/</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="account-profile-guest-view.html#" class="gg-plus">
+                                    <i class="icon md-google-plus"></i>
+                                    <p>https://www.facebook.com/</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </section>
+
+
+    <!-- END / PROFILE -->
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_block %}
+                    <li><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                            {% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html#">Acceso</a>
+                        <ul class="sub-menu">
+                            <li><a href="/auth/login/">Login</a></li>
+                            <li><a href="/auth/register/">Register</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+{% block body_block %}
+    <!-- LOGIN -->
+    <section id="login-content" class="login-content">
+        <div class="awe-parallax bg-login-content"></div>
+        <div class="awe-overlay"></div>
+        <div class="container">
+            <div class="row">
+    
+    
+                
+                <!-- FORM -->
+                <div class="col-lg-4 pull-right">
+                    <div class="form-login">
+
+                            <h2 class="text-uppercase">sign up</h2>
+
+                            <div>
+                                <a href="https://www.facebook.com/dialog/oauth?client_id=958236160899463&redirect_uri=http://localhost:8080/facebook/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
+                            </div>
+
+                            <div align="center">
+                                <h5>Or</h5>
+                            </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            
+                            <div class="form-datebirth">
+                                <input type="text" placeholder="Username" name="username">
+                            </div>
+                            <div class="form-email">
+                                <input type="text" placeholder="Email" name="email">
+                            </div>
+                            <div class="form-password">
+                                <input type="password" placeholder="Password" name="password">
+                            </div>
+                            
+                            <div class="form-submit-1">
+                                <input type="submit" value="Registrarse" class="mc-btn btn-style-1">
+                            </div>
+                            <div class="link">
+                                <a href="/auth/login/">
+                                    <i class="icon md-arrow-right"></i>Ya tienes una cuenta ? Log in
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- END / FORM -->
+    
+    
+            </div>
+        </div>
+    </section>
+    <!-- END / LOGIN -->
+{% endblock %}

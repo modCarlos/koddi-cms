@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav_block %}
+                    <li class="menu-item-has-children current-menu-item megamenu col-4"><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                        	{% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                    <li class="menu-item-has-children">
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="https://slack.com">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+
+{% block body_block %}
+    <!-- SUB BANNER -->
+    <section class="sub-banner section">
+        <div class="awe-parallax bg-profile-feature"></div>
+        <div class="awe-overlay overlay-color-3"></div>
+        <div class="container">
+            <div class="sub-banner-content">
+                <h2 class="big">De Geeks para Geeks</h2>
+                <p>aquí encontrarás los más completos tutoriales en la red</p>
+                <a href="/courses/" class="mc-btn btn-style-3">See course</a>
+            </div>
+        </div>
+    </section>
+    <!-- END / SUB BANNER -->
+
+
+    <!-- PAGE CONTROL -->
+    <section class="page-control">
+        <div class="container">
+            <div class="page-info" >
+                <a href="#" style="display: inline-block;"><i class="icon md"></i></a>
+            </div>
+            <div class="page-view">
+                View
+                <span class="page-view-info view-grid active" title="View grid"><i class="icon md-ico-2"></i></span>
+                <span class="page-view-info view-list" title="View list"><i class="icon md-ico-1"></i></span>
+
+            </div>
+        </div>
+    </section>
+    <!-- END / PAGE CONTROL -->
+    
+    <!-- CATEGORIES CONTENT -->
+    <section id="categories-content" class="categories-content">
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-md-9 col-md-push-3">
+                    <div class="content grid">
+                        <div class="row">
+
+ 
+ 					{% if posts %}
+						{% for post in posts %}
+							<!-- END / ITEM -->
+                            <div class="col-sm-6 col-md-4">
+                                <div class="mc-item mc-item-2">
+                                    <div class="image-heading">
+                                        <img src="/media/{{post.wall.url}}" alt="">
+                                    </div>
+                                    {% for tag in post.tags.all %}
+                                    	<div class="meta-categories"><a href="/tag/{{tag.slug}}/">{{tag.name}}</a></div>
+                                    {% endfor %}
+                                    <div class="content-item">
+                                        
+                                        <h4><a href="/post/{{post.slug}}/">{{post.name}}</a></h4>
+                                        <div class="name-author">
+                                            <span>By <a href="/author/{{post.author.username}}/">{{post.author.username}}</a></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!-- END / ITEM -->
+
+						{% endfor %}
+
+                        
+
+					{% else %}
+						No posts to show!!
+					{% endif %}
+                                                        
+                        </div>
+                        <ul class="pager">
+                            {% if posts.has_previous %}
+                            <li><a href="?page={{ posts.previous_page_number }}">Anterior ≤</a></li>
+                            {% endif %}
+
+                            <li class="current">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</li>
+
+                            {% if posts.has_next %}
+                            <li><a href="?page={{ posts.next_page_number }}">Siguiente ≤</a></li>
+                            {% endif %}
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- SIDEBAR CATEGORIES -->
+                <div class="col-md-3 col-md-pull-9">
+                    <aside class="sidebar-categories">
+                        <div class="inner">
+                            <!-- WIDGET CATEGORIES -->
+                            <div class="widget widget_categories">
+
+                            </div>
+                            <!-- END / WIDGET CATEGORIES -->
+    
+                            <!-- BANNER ADS -->
+                            <div class="mc-banner">
+                                <a href=""><img src="{% static "images/banner-ads-1.jpg" %}" alt=""></a>
+                            </div>
+                            <!-- END / BANNER ADS -->
+    
+                            <!-- BANNER ADS -->
+                            <div class="mc-banner">
+                                <a href=""><img src="{% static "images/banner-ads-2.jpg" %}" alt=""></a>
+                            </div>
+                            <!-- END / BANNER ADS -->
+                        </div>
+                    </aside>
+                </div>
+                <!-- END / SIDEBAR CATEGORIES -->
+    
+            </div>
+        </div>
+    </section>
+    <!-- END / CATEGORIES CONTENT -->
+{% endblock %}    

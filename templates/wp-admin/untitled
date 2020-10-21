@@ -1,0 +1,54 @@
+{% extends 'wp-admin/base.html' %}
+
+{% block title_block %}
+<h1>Payments</h1>
+{% endblock %}
+
+{% block menu_block %}
+	<div class="leftmenu">        
+            <ul class="nav nav-tabs nav-stacked">
+            	<li class="nav-header">Navigation</li>
+                <li><a href="/kd-admin/"><span class="iconfa-laptop"></span> Home</a></li>
+                <li><a href="/kd-admin/courses/"><span class="iconfa-laptop"></span> Cursos</a></li>
+                <li><a href="/kd-admin/posts/"><span class="iconfa-laptop"></span> Posts</a></li>
+                <li><a href="/kd-admin/categories/"><span class="iconfa-laptop"></span> Categorias</a></li>
+                <li><a href="/kd-admin/tags/"><span class="iconfa-laptop"></span> Tags</a></li>
+                <li><a href="/kd-admin/users/"><span class="iconfa-laptop"></span> Usuarios</a></li>
+                <li><a href="/kd-admin/statistics/"><span class="iconfa-laptop"></span> Estadísticas</a></li>
+                <li class="active"><a href="/kd-admin/settings/"><span class="iconfa-laptop"></span> Settings</a></li>                                                
+            </ul>
+        </div><!--leftmenu-->
+{% endblock %}
+
+{% block main_block %}
+
+                <div id="wizard" class="wizard">
+			        <div id="dashboard-left" class="span8">
+                        <div id="wiz1step1" class="formwiz" style="width:100%;">
+                            <h4 class="widgettitle">Email data</h4>
+                            
+                                <p>
+                                    <label>First Name</label>
+                                    <span class="field"><input type="text" name="firstname" id="firstname" class="input-xxlarge" /></span>
+                                </p>
+                                
+                                <p>
+                                    <label>Last Name</label>
+                                    <span class="field"><input type="text" name="lastname" id="lastname" class="input-xxlarge" /></span>
+                                </p>
+                                                                
+                                <p>
+                                    <label>Gender</label>
+                                    <span class="field">
+                                        <select name="selection" id="selection" class="uniformselect">
+                                            <option value="">Choose One</option>
+                                            <option value="1">Female</option>
+                                            <option value="2">Male</option>
+                                        </select>
+                                    </span>
+                                </p>
+                        </div><!--#wiz1step1-->
+                        
+                    </div><!--span8-->
+                </div>
+{% endblock %}

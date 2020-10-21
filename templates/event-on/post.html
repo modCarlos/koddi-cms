@@ -1,0 +1,190 @@
+{% extends 'event-on/base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<!-- Sub-banner -->      
+<section class="sub-banner newsection">
+    <div class="container">
+        <h2 class="title">{{post.name}}</h2>
+        <ul class="breadcrumb">
+           <li><a href="index.html">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li>{{post.name}}</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Events -->
+<section class="events text-left newsection">
+    <div class="container">
+        <div class="row">
+            <!-- col-md-9 -->
+            <div class="col-md-9 col-sm-9">
+                <!--Event Detail  -->
+                <section class="event-detail newsection">
+                    <h2 class="main-title "><a href="#">{{post.name}}</a></h2>
+                    <!-- meta -->
+                    <ul class="meta clearfix">
+                        <li class="date"><i class="icon fa fa-calendar"></i> {{post.event.date}}</li>
+                        <li><a href="#"><i class="icon fa fa-home"></i> {{post.event.place.name}}</a></li>
+                        <li><a href="#"><i class="icon fa fa-map-marker"></i>{{post.event.place.location}}</a></li>
+                    </ul>
+                    <!-- event-detail-img -->
+                    <div class="event-detail-img">
+                        <img src="/media/{{post.event.photo.url}}/" alt="">
+                    </div>
+
+                    <h3 class="title">Whats About</h3>
+
+                    <p>{{post.description}}</p>
+
+                    <!-- Social Icon -->
+                    <div class="social-icon">
+                        <a href="#" class="facebook facebook-pagle">FACEBOOK PAGE</a>
+                        <a href="#" class="facebook fa fa-facebook"></a>
+                        <a href="#" class="twitter fa fa-twitter"></a>
+                        <a href="#" class=" googleplus fa fa-google-plus"></a>
+                        <a href="#" class="vimeo fa fa-vimeo-square"></a>
+                        <a href="#" class="linkedin fa fa-linkedin"></a>
+                    </div>
+                </section>
+
+
+               <!-- comments -->
+                        <section class="comments newsection">
+                            <h2 class="title">Comments</h2>
+                            <ul>
+                                <li>
+                                    <div class="comment">
+                                        
+                                        <div class="comment-content">
+                                            <p class="author"><span class="date"> 02:16 pm - April 03,2014</span> </p>
+                                            <p>Liquorice sweet roll sesame snaps sweet roll liquorice sweet macaroon chocolate. Muffin sweet roll topping tootsie roll. Chocolate bar muffin lemon drops. Fruitcake jelly-o cheesecake apple pie liquorice danish gummies gummies marshmallow. </p>
+                                            <a href="#" class="btn btn-disabled">Reply</a>
+                                        </div>
+                                    </div>
+                                    <!-- Comments Child -->
+                                    <ul class="child">
+                                        <li>
+                                            <div class="comment">
+                                                
+                                                <div class="comment-content">
+                                                    <p class="author"><span class="date"> 02:16 pm - April 03,2014</span> </p>
+                                                    <p>Liquorice sweet roll sesame snaps sweet roll liquorice sweet macaroon chocolate. Muffin sweet roll topping tootsie roll. Chocolate bar muffin lemon drops. Fruitcake jelly-o cheesecake apple pie liquorice danish gummies gummies marshmallow. </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="comment">
+                                        
+                                        <div class="comment-content">
+                                            <p class="author"><span class="date"> 02:16 pm - April 03,2014</span> </p>
+                                            <p>Liquorice sweet roll sesame snaps sweet roll liquorice sweet macaroon chocolate. Muffin sweet roll topping tootsie roll. Chocolate bar muffin lemon drops. Fruitcake jelly-o cheesecake apple pie liquorice danish gummies gummies marshmallow. </p>
+                                            <a href="#" class="btn btn-disabled">Reply</a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </section> 
+
+               <div class="comment-form newsection">
+                            <h2 class="title">Haz una pregunta</h2>
+
+                            <form>
+                                <div class="row">
+                                    
+                                    <!--<p class="col-md-12">
+                                        <label>SUBJECT<span>*</span></label>
+                                        <input type="text" placeholder="Subject" class="textflied">
+                                    </p>-->
+                                    <p class="col-md-12">
+                                        <label>COMMENT<span>*</span></label>
+                                        <textarea rows="10"  placeholder="comment" class="texttextarea"></textarea>
+                                    </p>
+                                    <p class="col-md-12">
+                                        <button class="btn btn-disabled">POST COMMENT</button>
+                                    </p>
+                                </div> 
+                            </form>
+
+                        </div> 
+
+
+            </div>
+            <!-- Col-md-3 -->
+            <div class="col-md-3 col-sm-3">
+                <aside id="aside" class="aside-bar-style-two clearfix">
+                        
+                    <div class="widget border-remove">
+
+                               <div class="clearfix">
+
+                            </div>
+                            <a href="javascript:wishlist();" id="wishlist" class="btn btn-black btn-full"><i class="icon fa fa-heart"> </i>Add wishlist</a>
+                            <a href="/event-on/post/{{post.slug}}/buy-ticket/" class="btn btn-Gradient-pri btn-full"> buy tıcket</a>
+                        </div>
+
+
+                    <div class="widget clearfix">
+                        <h3 class="title">Top Popular Post</h3>
+                        <div class="top-ppost">
+                            <div class="date">
+                                <p><span>31</span>FEB</p>
+                            </div>
+                            <div class="content">
+                                <h4  class="title"><a href="#">Using Social Services Increase Your Sales </a></h4>
+                                <a href="#" class="meta"><i class="icon fa fa-map-marker"></i>Istanbul / TR</a>
+                            </div>
+                        </div>
+
+                        <div class="top-ppost">
+                            <div class="date">
+                                <p><span>31</span>FEB</p>
+                            </div>
+                            <div class="content">
+                                <h4  class="title"><a href="#">Using Social Services Increase Your Sales </a></h4>
+                                <a href="#" class="meta"><i class="icon fa fa-map-marker"></i>Istanbul / TR</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <div class="widget tag">
+                            <h3 class="title">Tags Widget</h3>  
+                            <a href="#">Event</a><a href="#">Fashion</a><a href="#">Design</a><a href="#">Hotels</a><a href="#">Up Coming</a><a href="#">Venue</a><a href="#">Speaker</a><a href="#" class="last">Conference</a>
+                        </div>  
+
+
+                        <div class="widget news">
+                            <h3 class="title">Join Our Newsletter</h3>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Select Location" >
+                                    <button class="icon fa fa-paper-plane-o "></button>
+                                </div>
+                                <button class="btn btn-disabled">Sign Up</button>
+                            </form>
+                        </div>
+
+
+                    </aside>
+                </div>
+            </div> 
+        </div> 
+    </section>
+
+    <script type="text/javascript">
+        function wishlist() {
+            var slug = '{{post.slug}}';
+            $.get('/event-on/wishlist/add/', {post : slug }, function(data){
+               document.getElementById("wishlist").className = "btn btn-black btn-full";
+               $("#wishlist").text("Added To Wishlist");
+            });
+        }
+    </script>
+
+{% endblock %}

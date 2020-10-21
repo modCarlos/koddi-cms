@@ -1,0 +1,21 @@
+Web Service List
+
+Name				Url					Methods			Authorization		Description
+
+Users				auth/user 			get/post		Only Authorized		Obtiene los datos de usuario/Registra usuario
+
+Post List			posts				get 			Read Only			Obtiene la lista con las publicaciones
+
+Tag lista 			tags				get 			Read Only			Obtiene lista de tags + posts relacionados
+
+Categories 			categories 			get 			Read Only			Obtiene lista de categorias + posts relacionados
+
+Courses 			courses 			get 			Read Only 			Obtiene lista de cursos + posts relacionados
+
+Search				search 				get 			Read Only			Obtiene lista de posts por busqueda
+
+Favorites			add/delete-fav		post 			Only Authorized		Permite agregar/borrar favoritos
+
+Cart				add/delete 			post 			Only Authorized		Permite agregar/borrar del carrito
+
+Reset Password		reset-pass 			post 			Read Only 			Permite resetear el password

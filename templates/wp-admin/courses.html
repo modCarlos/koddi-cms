@@ -1,0 +1,74 @@
+{% extends 'wp-admin/base.html' %}
+
+{% block title_block %}
+<h1>Cursos</h1>
+{% endblock %}
+
+{% block menu_block %}
+	<div class="leftmenu">        
+            <ul class="nav nav-tabs nav-stacked">
+            	<li class="nav-header">Navigation</li>
+                <li><a href="/kd-admin/"><span class="iconfa-laptop"></span> Home</a></li>
+                <li class="active"><a href="/kd-admin/courses/"><span class="iconfa-laptop"></span> Cursos</a></li>
+                <li><a href="/kd-admin/posts/"><span class="iconfa-laptop"></span> Posts</a></li>
+                <li><a href="/kd-admin/categories/"><span class="iconfa-laptop"></span> Categorias</a></li>
+                <li><a href="/kd-admin/tags/"><span class="iconfa-laptop"></span> Tags</a></li>
+                <li><a href="/kd-admin/users/"><span class="iconfa-laptop"></span> Usuarios</a></li>
+                <li><a href="/kd-admin/statistics/"><span class="iconfa-laptop"></span> Estadísticas</a></li>
+                <li><a href="/kd-admin/payments/"><span class="iconfa-laptop"></span> Payments</a></li>
+                <li><a href="/kd-admin/settings/"><span class="iconfa-laptop"></span> Settings</a></li>                                                
+            </ul>
+        </div><!--leftmenu-->
+{% endblock %}
+
+{% block main_block %}
+                <div class="span9">
+                    <h3 class="subtitle2">Cursos </h3>
+                    <a href="/kd-admin/add_course/"><button class="btn btn-primary">Add Course</button></a>
+                    <br /><br />
+                    <table class="table discussions">
+                        <colgroup>
+                            <col class="width60" />
+                            <col class="width15" />
+                            <col class="width10" />
+                            <col class="width15" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Posts</th>
+                                <th>Created at</th>    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for course in courses %}
+                            <tr>
+                                <td>
+                                    <a class="confirmation" href="/kd-admin/course/{{course.slug}}/delete/"><i class="icon-remove">Rem</i></a> 
+                                    <a href="/kd-admin/course/{{course.slug}}/edit/"><i class="icon-edit">Ed</i></a> 
+                                    <a id="topic" href="/kd-admin/course/{{course.slug}}/" data-placement="top" data-toggle="tooltip" data-original-title="Click me to view topic page">{{course.name}}</a>
+                                </td>
+                                <td><a href="">{{course.category.name}}</a></td>
+                                <td>{{course.posts}}</td>
+                                <td>{{course.created_at|date:"M d, Y"}}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                            
+                        <br /><br />
+                            
+                        
+                </div><!--span9-->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+    var elems = document.getElementsByClassName('confirmation');
+    var confirmIt = function (e) {
+        if (!confirm('Are you sure?')) e.preventDefault();
+    };
+    for (var i = 0, l = elems.length; i < l; i++) {
+        elems[i].addEventListener('click', confirmIt, false);
+    }
+</script>
+{% endblock %}

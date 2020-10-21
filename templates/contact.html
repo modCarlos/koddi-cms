@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav_block %}
+                    <li class="menu-item-has-children current-menu-item megamenu col-4"><a href="/">Home</a></li>
+                    <li class="menu-item-has-children megamenu">
+                        <a href="">Tutoriales</a>
+                        <ul class="sub-menu">
+
+                        	{% for category in categories %}
+                                    <li><a href="/category/{{category.slug}}/">{{category.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    {% if not user.is_authenticated %}
+                        <li class="menu-item-has-children">
+                            <a href="#">Acceso</a>
+                            <ul class="sub-menu">
+                                <li><a href="/auth/login/">Login</a></li>
+                                <li><a href="/auth/register/">Register</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                    <li class="menu-item-has-children">
+                        <a href="/courses/">Cursos</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="categories.html">Únete a Slack</a>
+                    </li>
+{% endblock %}
+
+
+{% block body_block %}
+    
+{% endblock %}    

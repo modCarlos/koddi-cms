@@ -1,0 +1,47 @@
+{% extends 'event-on/base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="buy_btn"> 
+ <br> 
+ <h4 class="flux_title_h4">Login & Register</h4> <br> 
+</div> 
+<div id="box"> 
+    <div id="content"> 
+        <div id="box_left"> 
+            <h1>Register</h1> 
+            <div id="login"> Insert your account informations: <br> 
+                <form name="register" action="/event-on/auth/register/" method="post" accept-charset="utf-8"> 
+                    <input type="text" placeholder="Username" id="user" class="register user" title="Username" required> 
+                    <input type="email" placeholder="Email" id="email" class="register email" title="Email" required> 
+                    <input type="password" name="password" id="password" placeholder="Password" class="register password" title="Password" required> 
+                    <input type="password" name="repeat_password" id="rpassword" placeholder="Repeat password" class="register password" title="Repeat Password" required> <!-- Label for PopupBox --> <label for="terms" class="check_terms" id="lblAssociateWithCheckBox" title="Terms of Use"> 
+                    <input type="checkbox" class="check_box" id="terms" required> I agree the <a href="#" id="tou">Terms of Use</a>.</label> 
+                    <input type="submit" value="Register" class="btn_register"> 
+                </form> 
+            </div> 
+        </div> 
+        <div id="box_right"> 
+            <h1>Login</h1> 
+            <div class="social"> Login using social network: <br> 
+                <div class="twt"> <a href="#"></a> 
+                </div> 
+                <div class="fb"> <a href="#"></a> 
+                </div> 
+            </div> 
+            <div id="login"> Or insert your account informations: <br> 
+                <form name="login" method="post" action="/event-on/auth/login/" accept-charset="utf-8"> 
+                    <input type="text" name="username" placeholder="Username" id="l_user" class="login user" title="Username" required> 
+                    <input type="password" name="password" placeholder="Password" id="l_password" class="login password" title="Password" required> 
+                    <label for="logged" class="check_logged" id="lblAssociateWithCheckBox" title="Keep me logged in"> 
+                        <input type="checkbox" class="check_box" id="logged"> Keep me logged in</label> 
+                        <input type="submit" value="Login" class="btn_login"> 
+                    </form> 
+                </div> 
+                <div id="bottom_text"> Don't have an account? <a href="javascript:document.getElementById('user').focus()" title="Create new account">Register</a>. <br>Forgot your <a href="#" title="Recovery Password">Password</a> or <a href="#" title="Recovery Username">Username</a>? 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+
+{% endblock %}
